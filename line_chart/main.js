@@ -62,7 +62,7 @@
 	var createCopyHTML = function(prop) {
 		var html = _chartConfig.copy[prop];
 		if(prop === 'source') {
-			html = '<span>Source: ' + html + '</span>';
+			html = '<span>SOURCE: ' + html + '</span>';
 		} else if(prop === 'credit') {
 			html = '<span>' + html + '</span>';
 		}
