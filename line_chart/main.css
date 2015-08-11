@@ -1,0 +1,132 @@
+/* =========================== */
+/* Globe font stack examples
+/* =========================== */
+
+
+/* Serif headline */
+/* font-family: 'Miller', Helvetica, Times New Roman, Times, serif;* / 
+
+/* Sans-serif headline */
+/* font-family: 'Benton', Helvetica, Arial, sans-serif; */
+
+/* Serif body */
+/* font-family: 'Georgia', Times New Roman, Times, serif; */
+
+/* Sans-serif body */
+/* font-family: 'Helvetica', Arial, sans-serif; */
+
+/* =========================== */
+/* Graphic styles
+/* =========================== */
+
+body {
+    font-family: Helvetica, Arial, sans-serif;
+}
+
+.intro h1.hed {
+    font-family: 'Benton', Helvetica, Arial, sans-serif;    
+}
+
+.intro p.dek {
+    font-family: Helvetica, Arial, sans-serif;  
+}
+
+
+.axis {
+    font-size: 11px;
+    fill: #666;
+    font-weight: 300;
+}
+
+.axis path,
+.axis line {
+    fill: none;
+    stroke: #bbb;
+    shape-rendering: crispEdges;
+}
+
+.axis-y path { 
+    display: none;
+}
+
+.axis-y .tick line { 
+    display: none;
+}
+
+.grid .tick {
+    stroke-width: 1px;
+    stroke: #ddd;
+    stroke-dasharray: 3px 2px;
+    shape-rendering: crispEdges;
+}
+
+.grid-y .tick:first-child {
+    display: none;
+}
+
+.line {
+    fill: none;
+    stroke-width: 3px;
+}
+
+.legend {
+    height: 100%;
+    overflow: hidden;
+    margin-bottom: 1em;
+}
+
+.legend li {
+    float: left;
+    display: inline-block;
+    padding: 0.25em 0.5em;
+    margin-right: 1em;
+    line-height: 1;
+    font-size: 13px;
+}
+
+.legend li span {
+    display: inline-block;
+    height: 3px;
+    vertical-align: middle;
+    margin-right: 0.5em;
+    width: 1.5em;
+}
+
+.focus line {
+    fill: none;
+    stroke: rgba(200,200,200,0.4);
+    stroke-width: 1px;
+    shape-rendering: crispEdges;
+}
+
+.focus-group text {
+    font-size: 13px;
+    font-weight: 300;
+}
+
+.focus-group .focus-text--date {
+    fill: #aaa;
+}
+
+.focus-group .focus-text--value {
+    /*fill: #555;*/
+    font-weight: bold;
+}
+
+.focus-group rect {
+    fill: rgba(255,255,255,0.8);
+    stroke: #ccc;
+    shape-rendering: crispEdges;
+}
+
+.focus-group circle {
+    fill: rgba(255,255,255,0.5);
+    stroke: #aaa;
+    stroke-width: 1px;
+}
+
+@media screen and (min-width: 500px) {
+    .axis {
+        font-size: 13px;
+    }
+}
