@@ -23,13 +23,13 @@
 	};
 
 	// callback function (must be global to allow jsonp to work)
-	window.onLoadData = function(json) {
-		if(json.data) {
-			_data = json.data;
+	window.onLoadData = function(response) {
+		if(response) {
+			_data = response.data ? response.data : response;
 			formatData();
 			Chart.setup();
 		} else {
-			console.log('error: no data');
+			alert('no data');
 		}
 	};
 
@@ -76,9 +76,13 @@
 			script.src = url;
 			document.getElementsByTagName('head')[0].appendChild(script);
 		} else {
-			d3.json(_chartConfig.data, function(err, json) {
-				if(!err) {
-					onLoadData(json);
+			var dataType = _chartConfig.data.indexOf('.json') ? 'json' : 'csv';
+			
+			d3[dataType](_chartConfig.data, function(err, data) {
+				if(err) {
+					alert(err);
+				} else {
+					onLoadData(data);
 				}
 			});
 		}
