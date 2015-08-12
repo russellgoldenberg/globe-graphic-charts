@@ -11,9 +11,9 @@
 
 	// called once on page load
 	var init = function() {
-		setupCopy();
 		_mobile = isMobile.any();
-		fetchData(_chartConfig.data);
+		setupCopy();
+		fetchData();
 	};
 
 	// called automatically on page resize
@@ -28,9 +28,7 @@
 			_data = response.data ? response.data : response;
 			formatData();
 			Chart.setup();
-		} else {
-			alert('no data');
-		}
+		} else { console.log('no data'); }
 	};
 
 	// mobile detection
@@ -70,22 +68,20 @@
 	};
 
 	// load data from jsonp and trigger onLoadData
-	var fetchData = function(url) {
+	var fetchData = function() {
 		if(_chartConfig.data.indexOf('http') > -1) {
 			var script = document.createElement('script');
-			script.src = url;
+			script.src = _chartConfig.data;
 			document.getElementsByTagName('head')[0].appendChild(script);
-		} else {
-			var dataType = _chartConfig.data.indexOf('.json') ? 'json' : 'csv';
-			
+		} else if(_chartConfig.data.length) {
+			var dataType = _chartConfig.data.indexOf('.json') > -1 ? 'json' : 'csv';
 			d3[dataType](_chartConfig.data, function(err, data) {
-				if(err) {
-					alert(err);
-				} else {
+				if(err) { console.log(err.responseText); }
+				else {
 					onLoadData(data);
 				}
 			});
-		}
+		} else { console.log('no data in config.js'); }
 	};
 
 	// turn strings into numbers and parse date
